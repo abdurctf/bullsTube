@@ -1,0 +1,34 @@
+.title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tagline, .competitor {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .auth {
+    margin-bottom: 2rem;
+  }
+  
+  .authForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .authInput {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .authButton {
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+  
+  /* You might want to add more styles for layout and colors */
+  
