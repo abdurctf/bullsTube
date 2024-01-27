@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>BullsTube</h1>
-      <p className={styles.tagline}>USF students' favorite video sharing platform</p>
+      <p className={styles.tagline}>USF students favorite video sharing platform</p>
       
       
       <div className={styles.watchButtonContainer}>
