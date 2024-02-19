@@ -5,8 +5,8 @@ import ffmpeg from 'fluent-ffmpeg';
 
 const storage = new Storage();
 
-const rawVideoBucketName = "bullsTube-raw-videos";
-const processedVideoBucketName = "bullsTube-processed-videos";
+const rawVideoBucketName = "bullstube-raw-videos";
+const processedVideoBucketName = "bullstube-processed-videos";
 
 const localRawVideoPath = "./raw-videos";
 const localProcessedVideoPath = "./processed-videos";
