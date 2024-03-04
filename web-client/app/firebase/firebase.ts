@@ -21,7 +21,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
+console.log(app);
 // const analytics = getAnalytics(app);
 
 const auth = getAuth(app);
@@ -49,3 +50,5 @@ export function signOut() {
 export function onAuthStateChangedHelper(callback: (user: User | null) => void) {
   return onAuthStateChanged(auth, callback);
 }
+
+export default auth;
