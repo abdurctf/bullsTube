@@ -29,6 +29,11 @@
     margin-bottom: 1rem;
     cursor: pointer;
   }
+
+  .thumbnail {
+    margin: 10px;
+  }
+  
   
   /* You might want to add more styles for layout and colors */
   

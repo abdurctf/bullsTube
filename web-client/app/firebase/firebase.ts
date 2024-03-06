@@ -1,14 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import {
   getAuth,
+  signInWithPopup,
   GoogleAuthProvider,
   onAuthStateChanged,
-  signInWithPopup,
   User
 } from "firebase/auth";
-
+import { getFunctions } from "firebase/functions";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -17,38 +16,35 @@ const firebaseConfig = {
   authDomain: "bullstube-84e86.firebaseapp.com",
   projectId: "bullstube-84e86",
   appId: "1:147362338417:web:4428d6c9f581ef0417add0",
-  measurementId: "G-NZ70K1QE74"
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-console.log(app);
-// const analytics = getAnalytics(app);
+const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
+export const functions = getFunctions();
+
 /**
  * Signs the user in with a Google popup.
- * @returns a promise that resolves with the user's credentials.
+ * @returns A promise that resolves with the user's credentials.
  */
 export function signInWithGoogle() {
   return signInWithPopup(auth, new GoogleAuthProvider());
 }
 
 /**
- *Signs the user out.
- *@returns a promise that resolves when the user is signed out.
-  */
+ * Signs the user out.
+ * @returns A promise that resolves when the user is signed out.
+ */
 export function signOut() {
   return auth.signOut();
 }
 
 /**
- * Trigger a callback when the user auth state changes.
+ * Trigger a callback when user auth state changes.
  * @returns A function to unsubscribe callback.
  */
 export function onAuthStateChangedHelper(callback: (user: User | null) => void) {
   return onAuthStateChanged(auth, callback);
 }
-
-export default auth;
