@@ -16,13 +16,24 @@ const firestore = new Firestore();
 
 const videoCollectionId = 'videos';
 
+// export interface Video {
+//   id?: string,
+//   uid?: string,
+//   filename?: string,
+//   status?: 'processing' | 'processed',
+//   title?: string,
+//   description?: string  
+// }
+//new changes
 export interface Video {
-  id?: string,
-  uid?: string,
-  filename?: string,
-  status?: 'processing' | 'processed',
-  title?: string,
-  description?: string  
+  id?: string;
+  uid?: string;
+  filename?: string;
+  status?: 'processing' | 'processed';
+  title?: string; // Title of the video
+  description?: string; // Description of the video
+  uploaderEmail: string; // Email of the uploader
+  thumbnailFilename?: string; // The name of the thumbnail file in storage
 }
 
 async function getVideo(videoId: string) {
@@ -31,6 +42,9 @@ async function getVideo(videoId: string) {
 }
 
 export function setVideo(videoId: string, video: Video) {
+  if (!video.title || !video.description || !video.uploaderEmail) {
+    throw new Error('Video metadata must include title, description, and uploaderEmail');
+  }
   return firestore
     .collection(videoCollectionId)
     .doc(videoId)

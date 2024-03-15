@@ -8,6 +8,7 @@ import {
   uploadProcessedVideo
 } from "./storage";
 import { isVideoNew, setVideo } from "./firestore";
+import { title } from "process";
 
 // Create the local directories for videos
 setupDirectories();
@@ -39,7 +40,8 @@ app.post("/process-video", async (req, res) => {
     setVideo(videoId, {
       id: videoId,
       uid: videoId.split('-')[0],
-      status: 'processing'
+      status: 'processing',
+      uploaderEmail: ""
     });
   }
 
@@ -59,11 +61,21 @@ app.post("/process-video", async (req, res) => {
   }
 
   // Upload the processed video to Cloud Storage
+  const description = ""; // Declare or provide an initializer for the 'description' variable
+
+  const uploaderEmail = ""; // Declare or provide an initializer for the 'uploaderEmail' variable
+
+  const thumbnailFilename = ""; // Declare or provide an initializer for the 'thumbnailFilename' variable
+
   await uploadProcessedVideo(outputFileName);
 
   await setVideo(videoId, {
     status: 'processed',
-    filename: outputFileName
+    filename: outputFileName,
+    title, // These should be fetched from Firestore or included in the processing request
+    description,
+    uploaderEmail,
+    thumbnailFilename
   });
 
   await Promise.all([
